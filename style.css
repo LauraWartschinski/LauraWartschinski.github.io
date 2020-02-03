@@ -1,3 +1,115 @@
 body {
-  font-family: sans-serif;
+  background-color: lightgrey;
+  background-image: url(background_semi.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: 'Source Sans Pro',Verdana,sans-serif;
+  text-align: justify;
+}
+
+
+h1, h2, h3, h4 {
+  font-family: monospace;
+  color: #004B6B;
+}
+
+h1 {
+  font-size: 24px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #004B6B;
+}
+
+h2 {
+  margin-top: 30px;
+  font-size: 18px;
+
+}
+
+
+hr {
+  border-top: 1px solid #004B6B;
+  margin-bottom: 10px;
+}
+
+a {
+  color: #004B6B;
+}
+
+a:visited {
+  color: #004B6B;
+}
+
+.container {
+  width: 90%;
+  border-radius: 10px;
+  max-width: 1200px;
+  margin-top: 20px;
+  min-height: 400px;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+  
+}
+
+.content{
+
+  border-radius: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 100px;
+  padding-right: 100px;
+
+}
+
+.text {
+  width: auto;
+}
+
+.image {
+  border-radius: 5px;
+  float: right;
+  margin-left: 50px;
+}
+
+.space {
+  clear: both;
+  height: 50px;
+}
+
+.code {
+  text-align: left;
+  margin-left: 20px;
+  width: 90%;
+  border: 1px solid lightgrey;
+  border-radius: 15px;
+  padding-left: 15px;
+  padding-right: 5px;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.header {
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  height: 36px;
+  width: 100%;
+  background-color: #55737E;
+}
+
+.header p {
+  font-family: monospace;
+  padding-top: 5px;
+  font-size: 18px;
+  text-align: center;
+  color: #C0C3C3;
+}
+
+.header a{
+  color: #C0C3C3;
+}
+
+.header a:visited {
+  color: #C0C3C3;
 }
