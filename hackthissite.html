@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+<div class="header">
+<p><a href="index.html">about</a> | <a href="resume.html">resume</a> | <a href="projects.html">projects</a> | <a href="https://github.com/LauraWartschinski">github</a> | <a href="contact.html">contact</a> </p>
+</div>
+
+<div class="content">
+<p>Hackthissite is a free training ground for various hacking exercises as well as a community, and it exists for quite a while now (at least since 2004). </p>
+
+
+<div class="space"></div>
+<hr>
+<h2>Basic missions</h2>
+
+<p>The basic missions just require some HTML to solve. The objective is to figure out some passwords to advance to the next exercise.<br><br>
+<a href="https://www.hackthissite.org/missions/basic/1/">Exercise 1</a> is based on an html file which actually contains the plain text password in a comment. Reading the source code of the page is enough.<br><br>
+
+<a href="https://www.hackthissite.org/missions/basic/2/">Exercise 2</a> specifies that the password is compared to a file, but this file is missing. After looking around in the sourcecode for another clue, I realized that an empty string also does just fine.
+<br><br>
+
+
+In <a href="https://www.hackthissite.org/missions/basic/3/">exercise 3</a>, there is a page 'password.php' referenced in the html form. This php page can be freely accessed via url, and it contains the password in plaintext.<br><br>
+
+
+<a href="https://www.hackthissite.org/missions/basic/4/">Exercise 4</a> has a password being sent to an email adress. However, this email is stated in the code. By either copying the page and executing it locally, or by using the 'inspect page' feature of firefox and changing the code directly in the browser, the email can be changed in such a way that the attacker is the recipient of the password reminder.
+<xmp><form action="/missions/basic/4/level4.php" method="post">
+<input type="hidden" name="to" value="sam@hackthissite.org" />
+<input type="submit" value="Send password to Sam" /></form>
+</xmp>
+
+<a href="https://www.hackthissite.org/missions/basic/5/">Exercise 5</a> can be completed with a very similar approach to the previous one.<br><br>
+
+For <a href="https://www.hackthissite.org/missions/basic/6/">exercise 6</a>, the approach is quite different. We need to break a very, very weak 'encryption' scheme by just looking at some examples of inputs and outputs. When I put in "abc123", it became quickly obvious that the ith character is replaced by this character incremented by i, starting at 0. Example: <br>
+a+0 = a<br>
+b+1 = c<br>
+c+2 = e<br>
+1+3 = 4<br>
+2+4 = 6<br>
+3+5 = 8<br>
+And the 'encrypted' password becomes ace468. Now we just have to do that in reverse for the given 'encrypted' password, fe5ee79i, and we arrive at fd3ba23b. Luckily, there wasn't even some kind of wraparound / overflow.<br><br>
+
+
+<img src="img/hts_inject.png" class="image"/>
+<a href="https://www.hackthissite.org/missions/basic/7/">Exercise 7</a> was a lot more fun than the previous ones. The site admin has placed a functionality on his website that returns the result of the unix cal command. At the same time, the file with the password is stored somewhere in the same directory under some unknown name. By using ";" as a seperator, we can make the calendar form return the outputs of more than one command. Putting in "; ls" gives us not only the calendar, but also the filename, which is k1kh31b1n55h.php (see image). Navigating to this unprotected file, we can read the password in plaintext.<br><br>
+
+
+In <a href="https://www.hackthissite.org/missions/basic/8/">exercise 8</a>, the trick doesn't work quite the same. The user input is apparently not directly executed, but a file is created. This can later be displayed, and it has the extensions shtml. Those are server-side include executables. Following their syntax, we can enter <xmp><!--#exec cmd="ls"--></xmp> Now we see a list of randomly generated shtml files - the output of the ls command we managed to get in shows us all the files in the tmp folder that we are currently in. We need to look at the folder one level higher up, so we change the input slightly to <xmp><!--#exec cmd="ls ../"--></xmp> and we see au12ha39vc.php. Navigating to this file shows us the password!<br><br>
+
+
+<a href="https://www.hackthissite.org/missions/basic/9/">Exercise 9</a> is actually really similar. This time, we have to use the insecure form for level 8 to navigate two levels up in the directory and then go inside the folder for exercise 9. There we can find the file p91e283zc3.php, which gives us the password.
+<xmp><!–#exec cmd=”ls ../../9” –></xmp>
+
+In <a href="https://www.hackthissite.org/missions/basic/10/">exercise 10</a> hints that the admin didn't expect the users to know some javascript. The site sets a cookie when a user puts in a password, which contains a field specifying if the user is authenticated or not. However, cookies can be set by the browser, which can easily be achieved either with some javascript, or just with firefox browser tools.<br><br>  
+<img src="img/hts_cookie.png" /><br><br>
+
+<a href="https://www.hackthissite.org/missions/basic/11/">Exercise 11</a> just shows a very simple page with a randomly picked title of a song. I played around with the directories to see if I could navigate anywhere, but "tmp" and "a" did not work. Not being particularly into Elton John, it took me a while to see the connection and figure out that /e/ was a working subdirectory. From there, I could navigate through e/l/t/o/n, but the final directory did not lead anywhere. The clue for the exercise states that the admin "doesn't know apache very well". After some googling, I found that .htaccess files are used in apache to create password protected websites. The file https://www.hackthissite.org/missions/basic/11/e/l/t/o/n/.htaccess contains just the following info:
+<xmp>IndexIgnore DaAnswer.* .htaccess
+<Files .htaccess>
+require all granted
+</Files></xmp>
+The IndexIgnore statement makes the index not display a file. So apparently a file called DaAnswer with some extension is hidden here. I tried DaAnswer.php, which didn't exist, but DaAnswer.txt did. The text inside was "The answer is around! Just look a little harder." I checked the sourcecode, but there was nothing interesting there. I tried some other extensions, but none worked. It took my a while to realize the answer is <strike>mellon</strike> "around". On https://www.hackthissite.org/missions/basic/11/index.php, one can enter the answer. 
+
+<br><br>
+
+</p>
+
+
+<div class="space"></div>
+<hr>
+
+</div>
+</div>
+</body>
+</html>
