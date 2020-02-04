@@ -67,6 +67,12 @@ a:visited {
   width: auto;
 }
 
+.image-wide {
+  border-radius: 5px;
+  float: right;
+  margin-left: 50px;
+  max-height: 150px;
+}
 .image {
   border-radius: 5px;
   float: right;

@@ -9,7 +9,7 @@
 <div class="container">
 
 <div class="header">
-<p><a href="index.html">about</a> | <a href="resume.html">resume</a> | <a href="projects">projects</a> | <a href="https://github.com/LauraWartschinski">github</a> | <a href="contact.html">contact</a> </p>
+<p><a href="index.html">about</a> | <a href="resume.html">resume</a> | <a href="projects.html">projects</a> | <a href="https://github.com/LauraWartschinski">github</a> | <a href="contact.html">contact</a> </p>
 </div>
 
 <div class="content">
@@ -19,6 +19,8 @@
   <a href="https://github.com/LauraWartschinski/VulnerabilityDetection"><img src="https://raw.githubusercontent.com/LauraWartschinski/VulnerabilityDetection/master/img/Architecture.png" class="fullimage"/></a>
   <div class="text">
     <p>
+    Writing secure and clean code is hard, and static analysis tools with predefined rules don't catch all errors. On github, there is a vast number of vulnerable code samples, many of them fixed in commits. In my master's thesis, I scraped fixes for vulnerabilities in python source code from github, encoded the dataset in vector format with the help of <a href="https://radimrehurek.com/gensim/models/word2vec.html">Word2Vec</a> and trained a <a href="https://en.wikipedia.org/wiki/Long_short-term_memory">Long Short Term Memory Network</a> to find typical flawed code patterns for common vulnerabilities such as SQL injections, cross-site scripting or path disclosure. The resulting model was able to find those patterns with high precision (average 91%) and recall (average 83%) while highlighting specific code tokens that are possibly part of the vulnerability.<br>
+    The <a href="https://github.com/LauraWartschinski/VulnerabilityDetection">github repository</a> contains examples and further explanations as well as the <a href="https://github.com/LauraWartschinski/VulnerabilityDetection/blob/master/Master%20Thesis/master.pdf">master thesis</a> itself.
 </p>
   </div>
 
@@ -26,6 +28,19 @@
 <hr>
 
 
+
+
+
+  <h2><a href="hackthissite.html">Hackthissite</a></h2>
+  <a href="hackthissite.html"><img src="hts.png" class="image-wide"/></a>
+  <div class="text">
+    <p>
+    My writeups / solutions for the challenges on the hacking platform <a href="https://www.hackthissite.org">hackthissite.org</a> can be found <a href="hackthissite.html">here</a>.
+      </p>
+  </div>
+
+<div class="space"></div>
+<hr>
 
 
 
@@ -34,14 +49,27 @@
   <div class="text">
     <p>
 
-Firewalls for public wifi such as universities, airports, train stations, coffee shops or hotels often have restricting rules that prevent IP traffic before the user has logged in to the network, requiring a password, some payment or both before allowing access to the internet. But in many cases, DNS traffic to the local nameserver is not blocked. By setting up an authoritative nameserver for one's own subdomain, one can send DNS queries that will be transmitted to this outside DNS server, and therefore transmit data. It is possible to tunnel IP traffic encoded in DNS messages and therefore circumvent the restrictions of the network.<br><br>
-This writeup demonstrates how to use <a href="https://code.kryo.se/iodine/">iodine</a> to tunnel IP over DNS, how restricted hotspots can be used without credentials to browse the web, and shows some statistics that compare regular traffic with tunneled traffic. There is also a very simple script that acts as a basic detection tool for unusual DNS traffic. (<a href="https://github.com/LauraWartschinski/IPoverDNS">Github page</a>)
-</p>
+      Firewalls for public wifi such as universities, airports, train stations, coffee shops or hotels often have restricting rules that prevent IP traffic before the user has logged in to the network, requiring a password, some payment or both before allowing access to the internet. But in many cases, DNS traffic to the local nameserver is not blocked. By setting up an authoritative nameserver for one's own subdomain, one can send DNS queries that will be transmitted to this outside DNS server, and therefore transmit data. It is possible to tunnel IP traffic encoded in DNS messages and therefore circumvent the restrictions of the network.<br><br>
+      This writeup demonstrates how to use <a href="https://code.kryo.se/iodine/">iodine</a> to tunnel IP over DNS, how restricted hotspots can be used without credentials to browse the web, and shows some statistics that compare regular traffic with tunneled traffic. There is also a very simple script that acts as a basic detection tool for unusual DNS traffic. (<a href="https://github.com/LauraWartschinski/IPoverDNS">Github page</a>)
+      </p>
   </div>
 
 <div class="space"></div>
 <hr>
 
+
+
+  <h2><a href="https://github.com/LauraWartschinski/PrivateFriendToFriend">Private Friend2Friend network</a></h2>
+  <a href="https://github.com/LauraWartschinski/PrivateFriendToFriend"><img src="f2f.png" class="image"/></a>
+  <div class="text">
+    <p>
+A very simple prototype for a privacy-focused peer-to-peer filesharing network that provides deniability and allows for filesharing with unknown peers while at the same time only communicating with friends.<br>
+PFTF is a peer to peer network with two layers/overlays. I the first overlay, the connection overlay, every peer is connected with many other peers, just as one would usually expect. It is used for providing basic connectivity in order to discover your friends on the network, which whom the friend overlay is created. Only friends tell each other what files they have, and only friends share files directly. But friends forward file announcements to other friends, and do the same with file requests and answers to those requests. Therefore, it is never clear whether a single user provided a file himself or just informed other people that their friend provided it, and in the same way, a request could always come from the participant who asked or from somebody else, being merely forwarded. Therefore, the system provides strong deniability, while not being very efficient.<br>(<a href="https://github.com/LauraWartschinski/PrivateFriendToFriend">Github page</a>)
+      </p>
+  </div>
+
+<div class="space"></div>
+<hr>
 </div>
 </div>
 </body>
