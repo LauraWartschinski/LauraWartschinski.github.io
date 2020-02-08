@@ -16,7 +16,7 @@
 
 
   <h2><a href="https://github.com/LauraWartschinski/VulnerabilityDetection">Detecting Vulnerabilities in Python Source Code with Deep Learning</a></h2>
-  <a href="https://github.com/LauraWartschinski/VulnerabilityDetection"><img src="https://raw.githubusercontent.com/LauraWartschinski/VulnerabilityDetection/master/img/Architecture.png" class="fullimage"/></a>
+  <a href="https://github.com/LauraWartschinski/VulnerabilityDetection"><img src="img/lstm.png" class="fullimage"/></a>
   <div class="text">
     <p>
     Writing secure and clean code is hard, and static analysis tools with predefined rules don't catch all errors. On github, there is a vast number of vulnerable code samples, many of them fixed in commits. In my master's thesis, I scraped fixes for vulnerabilities in python source code from github, encoded the dataset in vector format with the help of <a href="https://radimrehurek.com/gensim/models/word2vec.html">Word2Vec</a> and trained a <a href="https://en.wikipedia.org/wiki/Long_short-term_memory">Long Short Term Memory Network</a> to find typical flawed code patterns for common vulnerabilities such as SQL injections, cross-site scripting or path disclosure. The resulting model was able to find those patterns with high precision (average 91%) and recall (average 83%) while highlighting specific code tokens that are possibly part of the vulnerability.<br>

@@ -70,14 +70,16 @@ a:visited {
 .image-wide {
   border-radius: 5px;
   float: right;
-  margin-left: 50px;
+  margin-left: 30px;
+  margin-bottom: 30px;
   max-height: 150px;
 }
 .image {
   border-radius: 5px;
   float: right;
-  margin-left: 50px;
-  max-height: 250px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  max-height: 300px;
 }
 .fullimage {
   border-radius: 5px;
