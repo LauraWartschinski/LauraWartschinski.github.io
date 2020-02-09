@@ -1,5 +1,5 @@
 body {
-  background-color: lightgrey;
+  background-color: #1D2B33;
   background-image: url(img/background_semi.png);
   background-size: cover;
   background-repeat: no-repeat;
@@ -79,7 +79,7 @@ a:visited {
   float: right;
   margin-left: 30px;
   margin-bottom: 30px;
-  max-height: 300px;
+  max-height: 270px;
 }
 .fullimage {
   border-radius: 5px;
