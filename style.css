@@ -1,7 +1,8 @@
 body {
   background-color: #0C3144;
-  background-image: url(img/background_semi.png);
-  background-size: cover;
+/*  background-image: url(img/background_semi.png);
+  background-size: cover;*/
+  background-image:none;
   background-repeat: no-repeat;
   font-family: 'Source Sans Pro',Verdana,sans-serif;
   text-align: justify;
